@@ -1,0 +1,41 @@
+[{
+		"name": "Notebook",
+		"price": 60	
+	},
+	{
+		"name": "Blue Ink Pen",
+		"price": 30
+	},
+	{
+		"name": "Ink Eraser",
+		"price": 20
+	},
+	{
+		"name": "Pen Pouch",
+		"price": 40	
+	},
+	{
+		"name": "Fullscape Papers",
+		"price": 5	
+	},
+	{
+		"name": "Ruler (15cm)",
+		"price": 10
+	},
+	{
+		"name": "Ruler (30cm)",
+		"price": 25	
+	},
+	{
+		"name": "Pencil Eraser ",
+		"price": 10	
+	},
+	{
+		"name": "Water Colours",
+		"price": 60
+	},
+	{
+		"name": "Wax Crayons ",
+		"price": 10
+	}
+]
