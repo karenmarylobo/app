@@ -99,7 +99,7 @@ module.exports = "body{\n\toverflow-x: hidden;\n}.nav-item{\n\tfont-weight:bold;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"topbar\" style=\"display: inline-block\"> \n   <img class=\"logo\" style=\"display: inline-block; \" src=\"./favicon.ico\">\n   <input class=\"form-control col-sm-3 searchbox\"   type=\"text\" name=\"search\" placeholder=\"Search\" >\n   <p class=\"float-right m-3\">items: {{count}} Cart : $${{Price}}</p>\n</div>\n<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n   <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n        <ul class=\"navbar-nav mr-auto\">\n           <li class=\"nav-item align-left\">\n\t  <a class=\"nav-link\" routerLink=\"/\">Home </a>\n            </li>\n            <li class=\"nav-item\">\n\t   <a class=\"nav-link\"  routerLink=\"/product\">Product</a>\n            </li>\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" routerLink=\"/company\">Company</a>\n            </li>\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" routerLink=\"/contact\">Contact</a>\n            </li>\n        </ul>\n    </div>\n</nav>\n\n<div class=\"row\">\n   <div class=\"col-md-2\">\n      <app-sidebar></app-sidebar>\n   </div>\n\n   <div class=\"col-md-10\">  \n      <router-outlet></router-outlet>\n   </div>\n</div>\n<footer>\n   {{ footer }}\n</footer>\n\n\n"
+module.exports = "<div class=\"topbar\" style=\"display: inline-block\"> \n   <img class=\"logo\" style=\"display: inline-block; \" src=\"./favicon.ico\">\n   <input class=\"form-control col-sm-3 searchbox\"   type=\"text\" name=\"search\" placeholder=\"Search\" >\n   <p class=\"float-right m-3\"><b>items:</b> {{count}} <b>Cart : $ </b>{{Price}}</p>\n</div>\n<nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n   <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"navbar-toggler-icon\"></span>\n    </button>\n\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n        <ul class=\"navbar-nav mr-auto\">\n           <li class=\"nav-item align-left\">\n\t  <a class=\"nav-link\" routerLink=\"/\">Home </a>\n            </li>\n            <li class=\"nav-item\">\n\t   <a class=\"nav-link\"  routerLink=\"/product\">Product</a>\n            </li>\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" routerLink=\"/company\">Company</a>\n            </li>\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" routerLink=\"/contact\">Contact</a>\n            </li>\n        </ul>\n    </div>\n</nav>\n\n<div class=\"row\">\n   <div class=\"col-md-2\">\n      <app-sidebar></app-sidebar>\n   </div>\n\n   <div class=\"col-md-10\">  \n      <router-outlet></router-outlet>\n   </div>\n</div>\n<footer>\n   {{ footer }}\n</footer>\n\n\n"
 
 /***/ }),
 
@@ -174,6 +174,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_pagination__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ngx-pagination */ "./node_modules/ngx-pagination/dist/ngx-pagination.js");
 /* harmony import */ var ngx_order_pipe__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ngx-order-pipe */ "./node_modules/ngx-order-pipe/fesm5/ngx-order-pipe.js");
 /* harmony import */ var _counter_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./counter.service */ "./src/app/counter.service.ts");
+/* harmony import */ var _phone_match_validator_directive__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./phone-match-validator.directive */ "./src/app/phone-match-validator.directive.ts");
+
 
 
 
@@ -200,7 +202,8 @@ var AppModule = /** @class */ (function () {
                 _product_product_component__WEBPACK_IMPORTED_MODULE_8__["ProductComponent"],
                 _company_company_component__WEBPACK_IMPORTED_MODULE_9__["CompanyComponent"],
                 _contact_contact_component__WEBPACK_IMPORTED_MODULE_10__["ContactComponent"],
-                _sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_11__["SidebarComponent"]
+                _sidebar_sidebar_component__WEBPACK_IMPORTED_MODULE_11__["SidebarComponent"],
+                _phone_match_validator_directive__WEBPACK_IMPORTED_MODULE_15__["PhoneMatchValidatorDirective"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -297,7 +300,7 @@ module.exports = "form{\n\tmargin: 0 auto;\n\tbackground-color: #f3f3f3;\n\tpadd
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n   <div class=\"row\">\n      <div class=\"col-md-8 offset-md-1\">\n\n         <h2 class=\"text-center register-title\" [ngStyle]=\"{color:'blue'}\">Write to us !</h2>\n\n         <form (ngSubmit)=\"form1.valid && onSubmit(form1.value)\" #form1=\"ngForm\">\n\n\t<div class=\"form-group\">\n\t   <label>First Name</label>\n\t   <input class=\"form-control\" type=\"text\" [(ngModel)]=\"user.fname\" [ngClass]=\"{'error': form1.submitted && firstName.invalid}\"#firstName=\"ngModel\"  name=\"fname\" required minlength=\"2\">\n\t          <div *ngIf=\"firstName.invalid && (firstName.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"firstName.hasError('required')\"> required field</div>\n\t      <div [ngStyle]=\"{color:'red'}\" *ngIf=\"firstName.hasError('minlength')\">Minimum 2 Characters required!</div>\n\t   </div>\n\t</div>\n\t<div class=\"form-group\">\n\t   <label>Last Name</label>\n\t   <input class=\"form-control\" type=\"text\" [(ngModel)]=\"user.lname\" [ngClass]=\"{'error': form1.submitted && lastName.invalid}\" #lastName=\"ngModel\"  name=\"lname\" required minlength=\"2\">\n\t          <div *ngIf=\"lastName.invalid && (lastName.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"lastName.hasError('required')\"> required field</div>\n\t      <div [ngStyle]=\"{color:'red'}\" *ngIf=\"lastName.hasError('minlength')\"> Minimum 2 Characters required!</div>\n\t   </div>\n\t</div>\n\t<div class=\"form-group\">\n\t   <label>Email</label>\n\t   <input class=\"form-control\" type=\"text\" [(ngModel)]=\"user.email\" [ngClass]=\"{'error': form1.submitted && email.invalid}\" #email=\"ngModel\"  name=\"email\" required pattern=\"^[_a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]*\\.([a-z]{2,4})$\">\n\t          <div *ngIf=\"email.invalid && (email.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"email.hasError('required')\"> required field</div>\n\t      <div [ngStyle]=\"{color:'red'}\" *ngIf=\"email.hasError('pattern')\"> Please enter valid email address</div>\n\t   </div>\n\t</div>\n\t<div class=\"form-group\">\n\t   <label>Phone number</label>\n\t   <input class=\"form-control\" type=\"password\" [(ngModel)]=\"user.pass1\" [ngClass]=\"{'error': form1.submitted && passwordOne.invalid}\"#passwordOne=\"ngModel\" name=\"pass1\" required minlength=\"8\">\n\t          <div *ngIf=\"email.invalid && (email.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"passwordOne.hasError('required')\"> required field</div>\n\t      <div [ngStyle]=\"{color:'red'}\" *ngIf=\"passwordOne.hasError('minlength')\">Minimum 8 characters required</div>\n\t   </div>\n\n\t</div>\n\t<div class=\"form-group\">\n\t   <label>Retype Phone number</label>\n\t   <input class=\"form-control\" type=\"password\" appPasswordMatchValidator=\"pass1\"[(ngModel)]=\"user.pass2\" [ngClass]=\"{'error': form1.submitted && passwordTwo.invalid}\" #passwordTwo=\"ngModel\" name=\"pass2\" required minlength=\"8\">\n\t          <div *ngIf=\"passwordTwo.invalid && (passwordTwo.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"passwordTwo.hasError('required')\"> required field</div>\n\t      <div [ngStyle]=\"{color:'red'}\"  *ngIf=\"passwordTwo.hasError('notEqual')\"> password do not match</div>\n\t   </div>\n\n\t</div>\n\t<div class=\"form-group\">\n\t   <label>Your message</label>\n\t   <textarea class=\"form-control\" type=\"text\" [(ngModel)]=\"user.message\" [ngClass]=\"{'error': form1.submitted && message.invalid}\"#message=\"ngModel\"  name=\"message\" required></textarea>\n\t   <div *ngIf=\"message.invalid && (message.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"message.hasError('required')\"> required field</div>\n\t   </div>\n\t</div>\n\t<button type=\"submit\" name=\"submit\">Submit</button>\n         </form>\n      </div>\n   </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n   <div class=\"row\">\n      <div class=\"col-md-8 offset-md-1\">\n\n         <h2 class=\"text-center register-title\" [ngStyle]=\"{color:'blue'}\">Write to us !</h2>\n\n         <form (ngSubmit)=\"form1.valid && onSubmit(form1.value)\" #form1=\"ngForm\">\n\n\t<div class=\"form-group\">\n\t   <label>First Name</label>\n\t   <input class=\"form-control\" type=\"text\" [(ngModel)]=\"user.fname\" [ngClass]=\"{'error': form1.submitted && firstName.invalid}\"#firstName=\"ngModel\"  name=\"fname\" required minlength=\"2\">\n\t          <div *ngIf=\"firstName.invalid && (firstName.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"firstName.hasError('required')\"> required field</div>\n\t      <div [ngStyle]=\"{color:'red'}\" *ngIf=\"firstName.hasError('minlength')\">Minimum 2 Characters required!</div>\n\t   </div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t   <label>Last Name</label>\n\t   <input class=\"form-control\" type=\"text\" [(ngModel)]=\"user.lname\" [ngClass]=\"{'error': form1.submitted && lastName.invalid}\" #lastName=\"ngModel\"  name=\"lname\" required minlength=\"2\">\n\t          <div *ngIf=\"lastName.invalid && (lastName.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"lastName.hasError('required')\"> required field</div>\n\t      <div [ngStyle]=\"{color:'red'}\" *ngIf=\"lastName.hasError('minlength')\"> Minimum 2 Characters required!</div>\n\t   </div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t   <label>Email</label>\n\t   <input class=\"form-control\" type=\"text\" [(ngModel)]=\"user.email\" [ngClass]=\"{'error': form1.submitted && email.invalid}\" #email=\"ngModel\"  name=\"email\" required pattern=\"^[_a-z0-9]+(\\.[_a-z0-9]+)*@[a-z0-9-]*\\.([a-z]{2,4})$\">\n\t          <div *ngIf=\"email.invalid && (email.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"email.hasError('required')\"> required field</div>\n\t      <div [ngStyle]=\"{color:'red'}\" *ngIf=\"email.hasError('pattern')\"> Please enter valid email address</div>\n\t   </div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t   <label>Phone number</label>\n\t   <input class=\"form-control\" type=\"number\" [(ngModel)]=\"user.pass1\" [ngClass]=\"{'error': form1.submitted && passwordOne.invalid}\"#passwordOne=\"ngModel\" name=\"pass1\" required minlength=\"8\">\n\t          <div *ngIf=\"email.invalid && (email.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"passwordOne.hasError('required')\"> required field</div>\n\t      <div [ngStyle]=\"{color:'red'}\" *ngIf=\"passwordOne.hasError('minlength')\">Minimum 10 numbers required</div>\n\t   </div>\n\t</div>\n\n\t<div class=\"form-group\">\n\t   <label>Retype Phone number</label>\n\t   <input class=\"form-control\" type=\"number\" appPhoneMatchValidator=\"pass1\"[(ngModel)]=\"user.pass2\" [ngClass]=\"{'error': form1.submitted && passwordTwo.invalid}\" #passwordTwo=\"ngModel\" name=\"pass2\" required minlength=\"8\">\n\t          <div *ngIf=\"passwordTwo.invalid && (passwordTwo.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"passwordTwo.hasError('required')\"> required field</div>\n\t      <div [ngStyle]=\"{color:'red'}\"  *ngIf=\"passwordTwo.hasError('notEqual')\"> password do not match</div>\n\t   </div>\n\n\t</div>\n\t<div class=\"form-group\">\n\t   <label>Your message</label>\n\t   <textarea class=\"form-control\" type=\"text\" [(ngModel)]=\"user.message\" [ngClass]=\"{'error': form1.submitted && message.invalid}\"#message=\"ngModel\"  name=\"message\" required></textarea>\n\t   <div *ngIf=\"message.invalid && (message.dirty) || form1.submitted\">\n\t          <div [ngStyle]=\"{color:'red'}\" *ngIf=\"message.hasError('required')\"> required field</div>\n\t   </div>\n\t</div>\n\n\t<button type=\"submit\" name=\"submit\">Submit</button>\n         </form>\n      </div>\n   </div>\n</div>\n"
 
 /***/ }),
 
@@ -327,10 +330,6 @@ var ContactComponent = /** @class */ (function () {
         };
     }
     ContactComponent.prototype.onSubmit = function (value) {
-        if (value == "") {
-            console.log('empty');
-        }
-        console.log('you submitted value:', value);
     };
     ContactComponent.prototype.ngOnInit = function () {
     };
@@ -378,7 +377,6 @@ var CounterService = /** @class */ (function () {
     CounterService.prototype.increase_quantity = function (temp_product) {
         this.Price += temp_product.price;
         this.prices.next(this.Price);
-        console.log(this.prices);
     };
     CounterService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -411,7 +409,7 @@ module.exports = ".img-section{\n\t background:url('bg.png');\n\t background-siz
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"img-section\">\n    <p class=\"tag-line align-center\">Change your ideas into success! </p>\n</section>\n<section class=\"products\">\n   <h3 class=\"product-line mt-3 text-center\">Product Range</h3>\n   <br>\n   <div class=\"row\">\n\n      <div class=\"card m-3\" style=\"width: 18rem;\">\n         <img class=\"card-img-top\" src=\"./assets/images/colors.jpeg\" width=\"250\" height=\"200\" alt=\"Card image cap\">\n         <div class=\"card-body\">\n\t<h5 class=\"card-title\">Colours</h5>\n\t<p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n         <a  routerLink=\"/product\" class=\"btn btn-primary\">Go to products</a>\n         </div>\n   </div>\n\n\n      <div class=\"card m-3\" style=\"width: 18rem;\">\n         <img class=\"card-img-top\" src=\"./assets/images/notebook.png\" width=\"250\" height=\"200\" alt=\"Card image cap\">\n         <div class=\"card-body\">\n\t<h5 class=\"card-title\">Notebooks</h5>\n\t<p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n         <a  routerLink=\"/product\"class=\"btn btn-primary\">Go to products</a>\n         </div>\n   </div>\n\n\n      <div class=\"card m-3\" style=\"width: 18rem;\">\n         <img class=\"card-img-top\" src=\"./assets/images/eraser.jpg\" width=\"250\" height=\"200\"  alt=\"Card image cap\">\n         <div class=\"card-body\">\n\t<h5 class=\"card-title\">Erasers</h5>\n\t<p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n         <a  routerLink=\"/product\" class=\"btn btn-primary\">Go to products</a>\n         </div>\n   </div>\n      <div class=\"card m-3\" style=\"width: 18rem;\">\n         <img class=\"card-img-top\" src=\"./assets/images/eraser.jpg\" width=\"250\" height=\"200\"  alt=\"Card image cap\">\n         <div class=\"card-body\">\n\t<h5 class=\"card-title\">Erasers</h5>\n\t<p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n\t<a  routerLink=\"/product\" class=\"btn btn-primary\">Go to products</a>\n         </div>\n      </div>\n   </div>\n</section>"
+module.exports = "<section class=\"img-section\">\n    <p class=\"tag-line align-center\">Change your ideas into success! </p>\n</section>\n<section class=\"products\">\n   <h3 class=\"product-line mt-3 text-center\">Product Range</h3>\n   <br>\n   <div class=\"row\">\n\n      <div class=\"card m-3\" style=\"width: 18rem;\">\n         <img class=\"card-img-top\" src=\"./assets/images/colors.jpeg\" width=\"250\" height=\"200\" alt=\"Card image cap\">\n         <div class=\"card-body\">\n\t<h5 class=\"card-title\">Colours</h5>\n\t<p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n\t<a  routerLink=\"/product\" class=\"btn btn-primary\">Go to products</a>\n         </div>\n   </div>\n\n\n      <div class=\"card m-3\" style=\"width: 18rem;\">\n         <img class=\"card-img-top\" src=\"./assets/images/notebook.png\" width=\"250\" height=\"200\" alt=\"Card image cap\">\n         <div class=\"card-body\">\n\t<h5 class=\"card-title\">Notebooks</h5>\n\t<p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n\t<a  routerLink=\"/product\"class=\"btn btn-primary\">Go to products</a>\n         </div>\n   </div>\n\n\n      <div class=\"card m-3\" style=\"width: 18rem;\">\n         <img class=\"card-img-top\" src=\"./assets/images/eraser.jpg\" width=\"250\" height=\"200\"  alt=\"Card image cap\">\n         <div class=\"card-body\">\n\t<h5 class=\"card-title\">Erasers</h5>\n\t<p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n\t<a  routerLink=\"/product\" class=\"btn btn-primary\">Go to products</a>\n         </div>\n   </div>\n      <div class=\"card m-3\" style=\"width: 18rem;\">\n         <img class=\"card-img-top\" src=\"./assets/images/eraser.jpg\" width=\"250\" height=\"200\"  alt=\"Card image cap\">\n         <div class=\"card-body\">\n\t<h5 class=\"card-title\">Erasers</h5>\n\t<p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n\t<a  routerLink=\"/product\" class=\"btn btn-primary\">Go to products</a>\n         </div>\n      </div>\n   </div>\n</section>"
 
 /***/ }),
 
@@ -443,6 +441,55 @@ var HomeComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], HomeComponent);
     return HomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/phone-match-validator.directive.ts":
+/*!****************************************************!*\
+  !*** ./src/app/phone-match-validator.directive.ts ***!
+  \****************************************************/
+/*! exports provided: PhoneMatchValidatorDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhoneMatchValidatorDirective", function() { return PhoneMatchValidatorDirective; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+
+var PhoneMatchValidatorDirective = /** @class */ (function () {
+    function PhoneMatchValidatorDirective() {
+    }
+    PhoneMatchValidatorDirective_1 = PhoneMatchValidatorDirective;
+    PhoneMatchValidatorDirective.prototype.validate = function (control) {
+        var controlCompare = control.parent.get(this.appPhoneMatchValidator);
+        if (controlCompare && controlCompare.value !== control.value) {
+            return { 'notEqual': true };
+        }
+        return null;
+    };
+    var PhoneMatchValidatorDirective_1;
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], PhoneMatchValidatorDirective.prototype, "appPhoneMatchValidator", void 0);
+    PhoneMatchValidatorDirective = PhoneMatchValidatorDirective_1 = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Directive"])({
+            selector: '[appPhoneMatchValidator]',
+            providers: [{
+                    provide: _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NG_VALIDATORS"],
+                    useExisting: PhoneMatchValidatorDirective_1,
+                    multi: true
+                }]
+        })
+    ], PhoneMatchValidatorDirective);
+    return PhoneMatchValidatorDirective;
 }());
 
 
